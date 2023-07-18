@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.GuardianNews" parent="Base.Theme.GuardianNews" />
+
+    <style name="AppToolbar" parent="Widget.AppCompat.Toolbar">
+        <!-- Customize the color of the overflow icon to white -->
+        <item name="android:tint">@android:color/white</item>
+    </style>
 </resources>
