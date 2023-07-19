@@ -110,35 +110,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         });
 
-//        lvNews.setOnItemLongClickListener( (p, b, pos, id) -> {
-//            View view=getLayoutInflater().inflate(R.layout.row_layout, null);
-//            TextView textView=view.findViewById(R.id.tvTitle);
-//            textView.setText(getString(R.string.str_selected_row)+ pos);
-//            textView.setPadding(70,0,0,0);
-//            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-//            alertDialogBuilder
-//
-//                    //What is the message:
-//                    .setMessage(R.string.str_alert_del)
-//
-//                    //what the Yes button does:
-//                    .setPositiveButton(R.string.str_yes, (click, arg) -> {
-//                        list.remove(pos);
-//                        myAdapter.notifyDataSetChanged();
-//                    })
-//                    //What the No button does:
-//                    .setNegativeButton(R.string.str_no, (click, arg) -> { })
-//
-//                    //An optional third button:
-//                    //.setNeutralButton("Maybe", (click, arg) -> {  })
-//
-//                    //You can add extra layout elements:
-//                    .setView(view)
-//
-//                    //Show the dialog
-//                    .create().show();
-//            return true;
-//        });
         pBNews=findViewById(R.id.pBNews);
 
         NewsHttp req = new NewsHttp(pBNews);
