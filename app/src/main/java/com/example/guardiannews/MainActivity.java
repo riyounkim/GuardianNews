@@ -11,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -56,12 +57,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ProgressBar pBNews;
     private List<News> list = new ArrayList<>( );
     private MyListAdapter myAdapter;
+    SharedPreferences prefs = null;
+    TextView tvMyName;
+    TextView tvMyEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        prefs = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         Toolbar tBar = findViewById(R.id.toolbar);
         setSupportActionBar(tBar);
 
@@ -76,8 +81,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+        tvMyName=headerView.findViewById(R.id.tvMyName);
+        tvMyEmail=headerView.findViewById(R.id.tvMyEmail);
 
+        String savedName=prefs.getString("username", "");
+        String savedEmail=prefs.getString("useremail", "");
 
+        tvMyName.setText(savedName);
+        tvMyEmail.setText(savedEmail);
         lvNews=findViewById(R.id.lvNews);
 
 
@@ -86,9 +98,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //Create a bundle to pass data to the new fragment
             News selectedItem=list.get(position);
             Bundle dataToPass = new Bundle();
-            dataToPass.putString("id", selectedItem.getId());
+            dataToPass.putString("id", selectedItem.getNews_id());
             dataToPass.putString("title", selectedItem.getWebTitle());
             dataToPass.putString("api", selectedItem.getApiUrl());
+            dataToPass.putString("publicationDate", selectedItem.getWebPublicationDate());
 
 
                 Intent nextActivity = new Intent(MainActivity.this, DetailActivity.class);
@@ -192,7 +205,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 for (int i= 0; i < 100; i++) {
                     try {
                         publishProgress(i);
-                        Thread.sleep(5);
+                        Thread.sleep(1);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

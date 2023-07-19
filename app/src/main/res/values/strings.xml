@@ -17,4 +17,5 @@
     <string name="str_no"> NO </string>
     <string name="str_close"> CLOSE </string>
     <string name="str_page_info"> Page Info </string>
+    <string name="str_save_to_my_news">ADD To My News</string>
 </resources>

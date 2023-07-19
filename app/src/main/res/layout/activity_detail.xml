@@ -27,26 +27,37 @@
             android:orientation="vertical">
 
 
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/fragmentLocation"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
             <Button
                 android:id="@+id/btnList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="5dp"
+
+                android:layout_margin="20dp"
+
+                android:layout_weight="1"
                 android:text="@string/str_go_back_to_list" />
-
-            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
+            <Button
+                android:id="@+id/btnAdd"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/fragmentLocation">
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
 
-                <!-- This FrameLayout is simply copied from fragment_example.xml in layout-sw720dp -->
+                android:layout_weight="1"
+                android:text="@string/str_save_to_my_news" />
 
-            </FrameLayout>
+        </LinearLayout>
+
 
         </LinearLayout>
 

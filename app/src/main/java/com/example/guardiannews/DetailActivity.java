@@ -18,11 +18,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.guardiannews.db.NewsRepository;
+import com.example.guardiannews.model.News;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 public class DetailActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    Button btnList;
+    Button btnList, btnAdd;
+    NewsRepository repo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +56,36 @@ public class DetailActivity extends AppCompatActivity implements NavigationView.
         navigationView.setNavigationItemSelectedListener(this);
 
         btnList=findViewById(R.id.btnList);
-
+        btnAdd=findViewById(R.id.btnAdd);
         btnList.setOnClickListener(click -> {
 
                 // Perform any necessary actions before finishing the current activity
 
                 finish(); // Finish the current activity and go back to the previous activity
+
+        });
+        btnAdd.setOnClickListener(e->{
+            repo=new NewsRepository(this);
+            String n_id = dataToPass.getString("id" );
+            String title = dataToPass.getString("title" );
+            String api = dataToPass.getString("api" );
+            String publicationDate=dataToPass.getString("publicationDate" );
+            News myNews=new News(n_id,title,api,publicationDate);
+            int id=repo.insert_Item(myNews);
+
+
+            Snackbar snackbar = Snackbar
+                    .make(btnAdd, "This News is added to My News List!", Snackbar.LENGTH_LONG)
+                    .setAction("UNDO", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            News addedNews=repo.getItem(News.class, id);
+                            //News addedNews=repo.get_ItemByHashMap(News.class, id);
+                            repo.delete_Item(addedNews);
+                        }
+                    });
+
+            snackbar.show();
 
         });
     }
