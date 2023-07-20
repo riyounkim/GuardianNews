@@ -4,10 +4,13 @@
 
     <item
         android:id="@+id/goHome"
-        android:title="Home" />
+        android:title="@string/str_home" />
     <item
-        android:id="@+id/support"
-        android:title="Support" />
+        android:id="@+id/setting"
+        android:title="@string/str_setting" />
+    <item
+        android:id="@+id/help"
+        android:title="@string/str_help" />
 
 
 </menu>

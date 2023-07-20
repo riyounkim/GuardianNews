@@ -19,18 +19,18 @@
     <item
         android:id="@+id/app_bar_search"
         android:icon="@drawable/ic_search_black_24dp"
-        android:title="Search"
+        android:title="@string/str_search"
         app:showAsAction="always"
         app:actionViewClass="android.widget.SearchView" />
     <item
         android:id="@+id/goHome"
-        android:title="Home" />
+        android:title="@string/str_home" />
     <item
         android:id="@+id/setting"
-        android:title="Setting" />
+        android:title="@string/str_setting" />
     <item
         android:id="@+id/help"
-        android:title="Help" />
+        android:title="@string/str_help" />
 
 
 </menu>

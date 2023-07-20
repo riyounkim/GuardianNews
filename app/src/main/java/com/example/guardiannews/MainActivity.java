@@ -47,6 +47,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The MainActivity class represents the main activity of the application.
+ * It displays a list of news articles fetched from a JSON API.
+ */
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String JSON_URL="https://content.guardianapis.com/search?api-key=test";
@@ -120,9 +124,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         req.execute(JSON_URL);  //Type 1
     }
 
+    /**
+     * The NewsHttp class extends AsyncTask to fetch news data from a JSON URL in the background.
+     */
     private class NewsHttp extends AsyncTask< String, Integer, String> {
 
         private ProgressBar progressBar;
+        /**
+         * Constructor for the NewsHttp class.
+         *
+         * @param pbNews The ProgressBar used to show the progress of the background task.
+         */
         public NewsHttp(ProgressBar pbNews){
             this.progressBar=pbNews;
 
@@ -143,11 +155,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         protected String doInBackground(String... strings) {
             String jsonUrl = strings[0];
             try {
-
-
                 list = getNewsJson(jsonUrl);
-
-
                 Log.i("Download", "News was download") ;
             } catch (Exception e) {
                 e.printStackTrace();
@@ -156,6 +164,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return "Done";
         }
 
+        /**
+         * Parses the JSON response from the API and returns a list of News objects.
+         *
+         * @param jsonUrl The URL of the JSON API.
+         * @return List of News objects representing the fetched news data.
+         * @throws IOException   If there is an error while reading the JSON response.
+         * @throws JSONException If there is an error while parsing the JSON data.
+         */
         private List<News> getNewsJson(String jsonUrl) throws IOException, JSONException {
 
             URL url = new URL(jsonUrl);
@@ -192,26 +208,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             // convert string to JSON:
             List<News> result=new ArrayList<>();
             for (int i = 0; i < news.length(); i++) {
-                JSONObject characterObject = news.getJSONObject(i);
+                JSONObject newsObject = news.getJSONObject(i);
 
-                String id = characterObject.getString("id");
-                String webTitle = characterObject.getString("webTitle");
+                String id = newsObject.getString("id");
+                String webTitle = newsObject.getString("webTitle");
 
-                String apiUrl = characterObject.getString("apiUrl");
-                String webPublicationDate = characterObject.getString("webPublicationDate");
+                String apiUrl = newsObject.getString("apiUrl");
+                String webPublicationDate = newsObject.getString("webPublicationDate");
                 // Create a new NewsCharacter object
                 News character = new News(id, webTitle, apiUrl, webPublicationDate);
 
                 // Add the character to the list
                 result.add(character);
             }
-
-
             //get the double associated with "value"
             return result ;
         }
-
-
     }
 
     @Override
@@ -265,7 +277,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             alertDialogBuilder.setNegativeButton(R.string.str_close, (click, arg) -> { }).setView(view).create().show();
         }
 
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         return true;
     }
 
@@ -289,7 +300,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         return false;
     }
-
+    /**
+     * The MyListAdapter class is a custom BaseAdapter to display news items in the ListView.
+     */
     private class MyListAdapter extends BaseAdapter {
 
         public int getCount() { return list.size(); }

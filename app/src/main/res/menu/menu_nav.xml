@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/nav_home"
-        android:title="Home" />
+        android:title="@string/str_home" />
     <item
         android:id="@+id/nav_my_news"
-        android:title="My News" />
+        android:title="@string/str_my_news" />
     <item
         android:id="@+id/nav_exit"
-        android:title="Exit" />
+        android:title="@string/str_exit" />
 </menu>

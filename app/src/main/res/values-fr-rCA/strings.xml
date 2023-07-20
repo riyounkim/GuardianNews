@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Nouvelles du gardien</string>
+    <string name="open">Ouvrir</string>
+    <string name="close">Fermer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Bonjour fragment vide</string>
+    <string name="navigation_drawer_open">Ouvrir le menu de navigation</string>
+    <string name="navigation_drawer_close">Fermer le menu de navigation</string>
+    <string name="nav_header_title">Nouvelles du Guardian</string>
+    <string name="nav_header_name">Nom d\'utilisateur</string>
+    <string name="nav_header_email">Adresse e-mail de l\'utilisateur</string>
+    <string name="nav_header_desc">En-tête de navigation</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="str_go_back_to_list">Retourner à la liste</string>
+    <string name="str_alert_del">Voulez-vous supprimer ceci ?</string>
+    <string name="str_selected_row">La rangée sélectionnée est :</string>
+    <string name="str_yes">OUI</string>
+    <string name="str_no">NON</string>
+    <string name="str_close">FERMER</string>
+    <string name="str_page_info">Info de la page</string>
+    <string name="str_save_to_my_news">Ajouter à mes actualités</string>
+    <string name="str_my_news_list">Liste de mes actualités</string>
+    <string name="str_version_number">version 1</string>
+    <string name="str_home">Accueil</string>
+    <string name="str_my_news">Mes actualités</string>
+    <string name="str_exit">Quitter</string>
+    <string name="str_setting">Réglage</string>
+    <string name="str_help">Aide</string>
+    <string name="str_search">Recherche</string>
+</resources>
